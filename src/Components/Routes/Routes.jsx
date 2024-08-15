@@ -13,7 +13,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <PrivateRoutes><ProductSec></ProductSec></PrivateRoutes>,
-        loader: () => fetch('http://localhost:5000/productCount')
+        loader: () => fetch('https://new-task-server-mu.vercel.app/productCount')
       }
     ]
   },

@@ -13,15 +13,15 @@ const ProductSec = () => {
   const { data: products } = useQuery({
     queryKey: ['products'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:5000/product')
+      const res = await fetch(`https://new-task-server-mu.vercel.app/product?page=${currentPage}&size=${itemsPerPage}`)
       console.log('products', products);
       return res.json()
-
+      
     }
   })
   // Pagination
 
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0)
   const { count } = useLoaderData()
   console.log(count);
   const itemsPerPage = 6;
@@ -32,6 +32,11 @@ const ProductSec = () => {
   const handlePrev = () => {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1)
+    }
+  }
+  const handleNext = () => {
+    if (currentPage < pages.length - 1) {
+      setCurrentPage(currentPage + 1)
     }
   }
 
@@ -58,7 +63,7 @@ const ProductSec = () => {
                 </div>
                 <div className="text-center p-5">
                   <h1 className="text-[#444444] font-semibold text-[20px]">
-                    Walter White
+                    {p.productName}
                   </h1>
                   <p className="text-[#AAAAAA]">Chief Executive Officer</p>
                 </div>
@@ -75,13 +80,17 @@ const ProductSec = () => {
         {
           pages.map(page =>
             <button
+            
               onClick={() => setCurrentPage(page)}
               key={page}
-              className="btn btn-outline btn-accent"
+              className={`btn btn-outline btn-accent ${currentPage === page ? 'selected' : ''}`}
             >{page}</button>
 
           )
         }
+        <button
+          className="btn btn-outline btn-accent"
+          onClick={handleNext}>Next</button>
       </div>
 
 
