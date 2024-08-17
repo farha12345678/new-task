@@ -3,6 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import './Cards.css'
 
+import { CiStar } from 'react-icons/ci';
+
 const ProductSec = () => {
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(6);
@@ -38,8 +40,8 @@ const ProductSec = () => {
 
     return (
         <div className='max-w-[1440px]'>
-            <h1>Products</h1>
-            <div className='lg:flex gap-x-10 justify-center items-center'>
+           
+            <div className='lg:flex lg:gap-x-10 justify-center items-center'>
                {/* <div className='border'>
                <input
                     type="text"
@@ -98,7 +100,7 @@ const ProductSec = () => {
               <div className="grid md:grid-cols-2 mt-10 lg:grid-cols-3 gap-4">
               {products?.map((product) => (
                
-             <div key={product.serial} className=" lg:w-96 lg:mx-10 h-[500px] bg-green-100 border border-green-600">
+             <div key={product.serial} className=" lg:w-96 lg:mx-10 h-[550px] bg-green-100 border border-green-600">
              <figure><img className='h-56 w-full' src={product.productImage} alt="Shoes" /></figure>
              <div className="card-body">
                  <h2 className="card-title text-xl font-bold">
@@ -108,9 +110,16 @@ const ProductSec = () => {
                  <p className='text-lg font-medium'>Price: <span>{product.price}</span></p>
                  <p className='text-lg font-medium text-green-700'>{product.description}</p>
                  <p className='text-lg font-medium'>Category: <span>{product.category}</span></p>
+                 <div className="flex">
+                    <p className='flex text-xl font-medium'>
+                       <CiStar />
+                    <p>{product.ratings}</p>
+                    </p>
+                    <p className='text-lg font-normal'>Brand Name: <span>{product.brandName}</span></p>
+                 </div>
                  <div className="card-actions justify-end">
-                    <p className=" text-green-700 font-medium" >{product.ratings}</p>
-                    <p><span>{product.brandName}</span></p>
+                    <p >Posted date & time: <span className=" text-green-700 font-medium mr-4">{product.creationDate}</span>-<span>{product.creationTime}</span></p>
+                   
                  </div>
              </div>
          </div>
