@@ -37,23 +37,44 @@ const ProductSec = () => {
     const { totalProducts, products } = data || { totalProducts: 0, products: [] };
 
     return (
-        <div>
+        <div className='max-w-[1440px]'>
             <h1>Products</h1>
-            <div>
-                <input
+            <div className='lg:flex gap-x-10 justify-center items-center'>
+               {/* <div className='border'>
+               <input
                     type="text"
                     placeholder="Search..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                 />
-                <select value={category} onChange={(e) => setCategory(e.target.value)}>
+               </div> */}
+               <label className="input input-bordered flex items-center gap-2">
+  <input  type="text"
+                    placeholder="Search With Name..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}/>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    className="h-4 w-4 opacity-70">
+    <path
+      fillRule="evenodd"
+      d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+      clipRule="evenodd" />
+  </svg>
+</label>
+                <div className=''>
+                <select className='dropdown btn border bg-white' value={category} onChange={(e) => setCategory(e.target.value)}>
                     <option value="">All Categories</option>
                     <option value="Watch">Watch</option>
                     <option value="Dress">Dress</option>
                     <option value="Shoes">Shoes</option>
                     <option value="Bag">Bag</option>
                 </select>
-                <select value={brand} onChange={(e) => setBrand(e.target.value)}>
+                </div>
+                <div>
+                <select className='dropdown btn border bg-white' value={brand} onChange={(e) => setBrand(e.target.value)}>
                     <option value="">All Brands</option>
                     <option value="UrbanStep">UrbanStep</option>
                     <option value="SpeedMax">SpeedMax</option>
@@ -61,17 +82,20 @@ const ProductSec = () => {
                     <option value="HoopMaster">HoopMaster</option>
                     <option value="ZenFit">ZenFit</option>
                 </select>
-                <select value={sort} onChange={(e) => setSort(e.target.value)}>
-                    <option value="">Sort By</option>
+                </div>
+                <div>
+                <select className='dropdown btn border bg-white' value={sort} onChange={(e) => setSort(e.target.value)}>
+                    <option value="">Sort By Price & Date</option>
                     <option value="price-asc">Price Low to High</option>
                     <option value="price-desc">Price High to Low</option>
                     <option value="date-new">Newest First</option>
                 </select>
+                </div>
             </div>
             {totalProducts === 0 ? (
                 <p>No products found</p>
             ) : (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid md:grid-cols-2 mt-10 lg:grid-cols-3 gap-4">
               {products?.map((product) => (
                
              <div key={product.serial} className=" lg:w-96 lg:mx-10 h-[500px] bg-green-100 border border-green-600">

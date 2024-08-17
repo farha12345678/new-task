@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
 import profile from '../../assets/profile.png'
+import logo from "../../../public/logo.png"
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const Navbar = () => {
     const {user , logOut} = useContext(AuthContext)
@@ -9,27 +11,15 @@ const Navbar = () => {
         <div>
             <div className="navbar bg-base-100">
   <div className="navbar-start">
+    <a className=" text-5xl font-bold text-green-500"><AiOutlineShoppingCart/></a>
   <a className=" text-5xl font-bold text-green-500">Trendify</a>
   </div>
-  <div className="navbar-center">
+  <div className="navbar-center gap-x-10 text-xl font-medium">
     <Link to='/logIn'><p>Log In</p></Link>
     <Link to='/register'><p>Register</p></Link>
   </div>
   <div className="navbar-end">
-    <button className="btn btn-ghost btn-circle">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-5 w-5"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-    </button>
+    
     {
             user ? <>
 
@@ -42,9 +32,9 @@ const Navbar = () => {
                 </a> */}
                 
                
-                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[2] p-2 shadow bg-base-100 rounded-box w-20 md:w-20">
+                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[2] p-2 shadow bg-base-100 rounded-full w-20 md:w-20">
                  <div>
-                    <img src={profile} alt="" />
+                    <img className="rounded-full" src={profile} alt="" />
                  </div>
 
 
@@ -58,7 +48,7 @@ const Navbar = () => {
               </div>
                  
                
-                  <Link><li onClick={logOut} className="font-bold   text-xl text-blue-500">Log Out</li></Link>
+                  <Link><li onClick={logOut} className="font-bold   text-xl text-green-600">Log Out</li></Link>
 
                 </ul>
               </div>
