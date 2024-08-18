@@ -27,11 +27,11 @@ const Navbar = () => {
               </div>
               <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 ">
                 {links}
-                <Link to='/login'><li>
+                {/* <Link to='/login'><li>
                   <button className="font-medium text-xl ml-4 text-purple-600">Log In</button></li></Link>
                 <Link to='/register'><li>
                   <button className="font-medium  text-xl ml-4 text-purple-600">Register</button></li></Link>
-                  <Link onClick={logOut} ><li>Log Out</li></Link>
+                  <Link onClick={logOut} ><li>Log Out</li></Link> */}
               </ul>
             </div>
             <div className="flex">
@@ -41,9 +41,17 @@ const Navbar = () => {
             </div>
           </div>
           <div className="navbar-center hidden font-medium text-xl lg:flex">
-            <ul className="menu menu-horizontal px-1 gap-x-6">
-              {links}
-            </ul>
+           {
+            user? <>
+            <Link to='/'>Products</Link>
+            </>
+            :
+            <>
+  <ul className="menu menu-horizontal px-1 gap-x-6">
+             {links}
+             </ul>
+            </>
+           }
           </div>
           <div className="navbar-end ">
             {
@@ -63,10 +71,7 @@ const Navbar = () => {
                 
               </>
                 : <>
-                  <div className="hidden lg:flex">
-                    <Link to='/login'><button className="font-medium text-xl ml-4 text-purple-600">Log In</button></Link>
-                    <Link to='/register'><button className="font-medium  text-xl ml-4 text-purple-600">Register</button></Link>
-                  </div>
+                  
                 </>
             }
 

@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
-import LogIn from "../Pages/LogIn";
+
 
 
 
@@ -12,16 +12,7 @@ const Root = () => {
     return (
         <div>
             <Navbar></Navbar>
-            {
-                user? <>
-                <Outlet></Outlet>
-                </>
-                 :
-                 <>
-                 <LogIn></LogIn>
-                 </>
-
-            }
+            <Outlet></Outlet>
             
             <Footer></Footer>
         </div>
