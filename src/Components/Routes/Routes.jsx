@@ -8,23 +8,22 @@ import ProductSec from "../Products/ProductSec";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root></Root>,
+    element: <Root />, // Use Root layout for all routes
     children: [
       {
         path: "/",
-        element: <PrivateRoutes><ProductSec></ProductSec></PrivateRoutes>,
-        loader: () => fetch('https://new-task-server-mu.vercel.app/productCount')
+        element: <PrivateRoutes><ProductSec /></PrivateRoutes>,
+      },
+      {
+        path: "login",
+        element: <LogIn />, // Login page with Navbar and Footer
+      },
+      {
+        path: "register",
+        element: <Register />, // Register page with Navbar and Footer
       }
-    ]
+    ],
   },
-  {
-    path: "/login",
-    element: <LogIn></LogIn>
-  },
-  {
-    path: "/register",
-    element: <Register></Register>
-  }
 ]);
 
 export default router;

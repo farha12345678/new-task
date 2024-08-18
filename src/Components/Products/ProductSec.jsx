@@ -16,7 +16,7 @@ const ProductSec = () => {
     // Function to fetch products with the provided parameters
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/product', {
+            const response = await axios.get('https://new-task-server-2.vercel.app/product', {
                 params: { page, size, category, brand, search, sort },
             });
             return response.data;
@@ -40,8 +40,14 @@ const ProductSec = () => {
 
     return (
         <div className='max-w-[1440px]'>
+            <div className='text-center'>
+                <h1 className='font-bold text-4xl text-green-600'>Welcome to Trendify</h1>
+                <p className='mt-2 font-medium'>Discover a diverse range of high-quality products tailored to meet your needs. <br /> Our intuitive filtering, sorting, and search options make it easy to find exactly what you're looking for, whether it's the latest trends or everyday essentials. <br /> Explore detailed product descriptions, reviews, and seamless navigation to enhance your shopping experience.
+
+</p>
+            </div>
            
-            <div className='lg:flex lg:gap-x-10 justify-center items-center'>
+            <div className='lg:flex mt-4 lg:gap-x-10 justify-center items-center'>
                {/* <div className='border'>
                <input
                     type="text"

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -7,6 +7,9 @@ import { AuthContext } from './../../Providers/AuthProvider';
 
 
 const Register = () => {
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state || '/'
 
 
     const [showPassword, setShowPassword] = useState(false)
@@ -48,7 +51,9 @@ const Register = () => {
             .then(result => {
                 console.log(result.user);
                 Swal.fire('User Created Successfully')
+                navigate(from)
                 e.target.reset()
+
             })
             .catch(error => {
 
